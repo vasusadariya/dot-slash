@@ -42,12 +42,12 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
-    <div className="min-h-screen bg-[#FFFFF4]"
-    style={{
-      backgroundImage: "radial-gradient(rgb(21, 22, 22) 1px, transparent 1px)",
-      backgroundSize: "24px 24px",
-      opacity: 0.1,
-    }}>
-    </div>
+        <div className="min-h-screen bg-[#FFFFF4]"
+            style={{
+                backgroundImage: "radial-gradient(rgb(21, 22, 22) 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+                opacity: 0.1,
+            }}>
+        </div>
     </div>
 }
