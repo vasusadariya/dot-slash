@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 export default function Navbar() {
-    return <div className="min-h-screen bg-[#FFFFF4]">
+    return <div>
         <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FFFFFFE6] backdrop-blur-md border-b-2 border-[#151616]">
             <div className="">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center gap-4">
                         <div>
                             <Link href="/" className="flex items-center ml-20">
-                                <span className="ml-20 font-bold text-black text-3xl">DotSlash</span>
+                                <span className="ml-10 font-bold text-black text-3xl">DotSlash</span>
                             </Link>
                         </div>
                         <div className="ml-5 px-3 py-2 flex items-center gap-4">
@@ -42,5 +42,12 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
+    <div className="min-h-screen bg-[#FFFFF4]"
+    style={{
+      backgroundImage: "radial-gradient(rgb(21, 22, 22) 1px, transparent 1px)",
+      backgroundSize: "24px 24px",
+      opacity: 0.1,
+    }}>
+    </div>
     </div>
 }
