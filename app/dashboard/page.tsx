@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { Wallet, ShoppingCart, Cloud, BarChart2, RefreshCcw, Download, CreditCard, Shield } from "lucide-react"
-// import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { ProductCard } from "@/components/product-card"
 import { ArticleCard } from "@/components/article-card"
 import { Sidebar } from "@/components/sidebar"
@@ -80,35 +79,45 @@ const articles = [
 ]
 
 export default function Dashboard() {
-    //   const [userName, setUserName] = useState<string>("")
+    const [isSidebarVisible, setIsSidebarVisible] = useState(true)
 
-    //   useEffect(() => {
-    //     const auth = getAuth()
-    //     const unsubscribe = onAuthStateChanged(auth, (user) => {
-    //       if (user) {
-    //         setUserName(user.displayName || "User")
-    //       }
-    //     })
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSidebarVisible(window.innerWidth >= 768)
+        }
 
-    //     return () => unsubscribe()
-    //   }, [])
+        // Initial check
+        handleResize()
+
+        // Add event listener
+        window.addEventListener('resize', handleResize)
+
+        // Cleanup
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
-            <Sidebar />
-
-            <div className="ml-64 p-8">
-
-
-                <div className="mb-12">
-                    <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">Hello
-                        {/* {userName} */}
-                        !👋</h2>
-
+            {/* Sidebar */}
+            <div className={`${isSidebarVisible ? 'block' : 'hidden'} md:block fixed left-0 top-0 h-full`}>
+                <div className="h-full w-64 mt-16"> {/* Added mt-16 to account for navbar height */}
+                    <Sidebar />
                 </div>
-                <section className="mb-12">
-                    <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100">Products</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+
+            {/* Main content */}
+            <div className={`transition-all duration-200 ease-in-out ${isSidebarVisible ? 'md:ml-64' : 'ml-0'} p-4 sm:p-6 md:p-8`}>
+                <div className="mb-8 md:mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-gray-900 dark:text-gray-100 pt-20 md:pt-16"> {/* Adjusted padding-top for navbar */}
+                        Hello!👋
+                    </h2>
+                </div>
+
+                <section className="mb-8 md:mb-12">
+                    <h2 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-gray-100">
+                        Products
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                         {products.map((product) => (
                             <ProductCard key={product.title} {...product} />
                         ))}
@@ -116,8 +125,10 @@ export default function Dashboard() {
                 </section>
 
                 <section>
-                    <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100">Popular help articles</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <h2 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-gray-100">
+                        Popular help articles
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                         {articles.map((article) => (
                             <ArticleCard key={article.title} {...article} />
                         ))}
@@ -127,4 +138,3 @@ export default function Dashboard() {
         </div>
     )
 }
-
