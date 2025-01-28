@@ -1,47 +1,57 @@
-import Link from "next/link";
+"use client"
 
-export default function Navbar() {
-    return (
-        <div className="min-h-screen bg-[#f9f2ef]">
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-[#f9f2ef] backdrop-blur-md border-b-2 border-[#151616]">
-                <div>
-                    <div className="flex justify-between items-center h-16">
-                        <div className="flex items-center gap-4">
-                            <div>
-                                <Link href="/" className="flex items-center ml-10">
-                                    <span className="ml-10 font-bold text-black text-3xl">HackOps</span>
-                                </Link>
-                            </div>
-                            <div className="ml-5 px-3 py-2 flex justify-items-end gap-4">
-                                <div className="transform transition duration-100 ease-in-out hover:scale-100">
-                                    <Link href="/" className="font-medium text-lg text-[#151616] hover:bg-[#fae8a4] px-3 py-2 hover:rounded-lg">
-                                        Home
-                                    </Link>
-                                </div>
-                                <div className="transform transition duration-100 ease-in-out hover:scale-100">
-                                    <Link href="/about" className="font-medium text-lg text-[#151616] hover:bg-[#fae8a4] px-3 py-2 hover:rounded-lg">
-                                        About
-                                    </Link>
-                                </div>
-                                <div className="transform transition duration-100 ease-in-out hover:scale-100">
-                                    <Link href="/contact" className="font-medium text-lg text-[#151616] hover:bg-[#fae8a4] px-3 py-2 hover:rounded-lg">
-                                        Contact
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-4 mr-10">
-                            <button className=" px-4 py-2 rounded-3xl border-2 border-[#000000] bg-[#ae7aff]
-                      text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                      hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
-                            >Login</button>
-                            <button className="text-black px-4 py-2 rounded-3xl` bg-[#D6F32F] border-2 border-[#000000] 
-                      shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                      hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
-                            >Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>)
+import Link from "next/link"
+import { Binary } from 'lucide-react'
+import { ThemeToggle } from "./theme-toggle"
+
+const navigation = [
+  { name: "Platform Solutions", href: "/platform" },
+  { name: "Clients", href: "/clients" },
+  { name: "Insights", href: "/insights" },
+  { name: "Company", href: "/company" },
+]
+
+export function Navbar() {
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-b">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 text-xl font-semibold">
+            <Binary className="h-6 w-6 dark:text-green-400" />
+            <span className="dark:text-white">HackOps</span>
+          </Link>
+
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center gap-8">
+            {navigation.map((item) => (
+              <Link 
+                key={item.name} 
+                href={item.href} 
+                className="text-sm font-medium text-foreground hover:text-purple-500 dark:text-white hover:dark:text-green-400"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Auth Buttons and Theme Toggle */}
+          <div className="hidden md:flex items-center gap-4">
+            <button className="px-4 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
+              <Link href="/login">Login</Link>
+            </button>
+            <button
+              className="px-4 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200"
+            >
+              <Link href="/signup">Sign up</Link>
+            </button>
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile Navigation */}
+          {/* <MobileNav /> */}
+        </div>
+      </div>
+    </nav>
+  )
 }
