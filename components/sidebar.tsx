@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { LayoutDashboard, FolderKanban, CheckSquare, InboxIcon, Calendar, FolderIcon, ChevronDown,House,LogOut, User2 } from 'lucide-react'
+import { CheckSquare, InboxIcon, House,LogOut} from 'lucide-react'
 
 const navigation = [
   { name: 'Home', icon: House, href: '/' },

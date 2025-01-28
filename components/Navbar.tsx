@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Star } from 'lucide-react'
+import { Binary } from 'lucide-react'
 import { ThemeToggle } from "./theme-toggle"
 
 const navigation = [
@@ -18,8 +18,8 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 text-xl font-semibold">
-            <Star className="h-6 w-6 dark:text-green-400" />
-            <span className="dark:text-white">Chorke</span>
+            <Binary className="h-6 w-6 dark:text-green-400" />
+            <span className="dark:text-white">HackOps</span>
           </Link>
 
           {/* Navigation Links */}
