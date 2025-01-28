@@ -8,7 +8,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center ml-20">
-                <span className="ml-20 text-xl font-bold text-black text-2xl">DotSlash</span>
+                <span className="ml-20 font-bold text-black text-2xl">DotSlash</span>
               </Link>
               <div className="ml-5 px-3 py-2">
                 <Link href="/" className="text-black hover:bg-[#D6F34C] px-3 py-2 rounded-lg text-lg">
