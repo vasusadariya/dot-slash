@@ -122,8 +122,8 @@ export function Navbar() {
                   <Image
                     src={user?.photoURL || "/default-avatar.svg"} // Fallback to default avatar
                     alt={user?.displayName || "User Avatar"}
-                    width={40}
-                    height={40}
+                    width={50}
+                    height={50}
                     className="rounded-full cursor-pointer"
                     aria-label="User Avatar"
                   />
