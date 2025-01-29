@@ -35,7 +35,7 @@ export default useAuthGuard;
 
 // export default function Dashboard() {
 //   // Use the auth guard to protect the page
-//   useAuthGuard();
+  // useAuthGuard();
 
 //   return (
 //     <div>

@@ -1,5 +1,5 @@
 "use client";
-
+typeof window !== 'undefined'
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config"; // Update with your Firebase config path
@@ -62,10 +62,10 @@ export default function Login() {
       console.error("Google Sign-In error:", error);
     }
   };
-  
+
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
         <p className="text-sm text-center text-gray-600">Sign in to your account</p>
@@ -113,9 +113,8 @@ export default function Login() {
           {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full px-4 py-2 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
-            }`}
+            className={`w-full px-4 py-2 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
+              }`}
             disabled={loading}
           >
             {loading ? "Logging in..." : "Login"}

@@ -24,7 +24,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [user, loading, error] = useAuthState(auth); // Using useAuthState hook to track user
   const router = useRouter();
-
   const handleLogout = async () => {
     try {
       await signOut(auth); // Sign out the user
@@ -33,7 +32,7 @@ export function Navbar() {
       console.error("Error signing out:", err);
     }
   };
-
+  
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +54,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-b transition-shadow ${isScrolled ? 'shadow-lg' : ''}`}>
+    <div className={`fixed top-0 left-0 right-0 z-50 bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-b transition-shadow ${isScrolled ? 'shadow-lg' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -78,7 +77,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Auth Buttons and Theme Toggle */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* <div className="hidden md:flex items-center gap-4">
             <button className="px-4 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
               <Link href="/login">Login</Link>
             </button>
@@ -86,7 +85,7 @@ export function Navbar() {
               <Link href="/signup">Sign up</Link>
             </button>
             <ThemeToggle />
-          </div> 
+          </div>  */}
           {/* Right Section - User Info or Auth Buttons */}
           <div className="flex items-center gap-4">
             {user ? (
@@ -138,6 +137,7 @@ export function Navbar() {
                     </button> */}
                   </div>
                 </div>
+                <ThemeToggle />
 
               </>
             ) : (
@@ -161,6 +161,8 @@ export function Navbar() {
                     Sign Up
                   </button>
                 </Link>
+                <ThemeToggle />
+
               </>
             )}
           </div>
@@ -221,6 +223,6 @@ export function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    </div>
   )
 }
