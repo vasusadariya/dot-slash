@@ -96,10 +96,10 @@ export function Navbar() {
                 <Link href="/dashboard">
                   <button
 
-                    className="px-6 py-2 hidden md:flex flex items-center justify-center gap-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
-                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
-                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                      className="px-6 py-2 md:flex flex items-center justify-center gap-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                      text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                      dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                      hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
                     <LayoutDashboard size={16} />
                     <span className="hidden md:inline">Dashboard</span>
@@ -123,8 +123,8 @@ export function Navbar() {
                   <Image
                     src={user?.photoURL || "/default-avatar.png"} // Fallback to default avatar
                     alt={user?.displayName || "User Avatar"}
-                    width={40}
-                    height={40}
+                    width={50}
+                    height={50}
                     className="rounded-full cursor-pointer"
                     aria-label="User Avatar"
                   />

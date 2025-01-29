@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <ThemeProvider>
         <LoadingWrapper>
-          <main className="pt-16">{children}</main>
+          {children}
         </LoadingWrapper>
         </ThemeProvider>
       </body>
