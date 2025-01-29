@@ -87,18 +87,19 @@ export function Navbar() {
             <ThemeToggle />
           </div>  */}
           {/* Right Section - User Info or Auth Buttons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4">
             {user ? (
               <>
                 {/* Dashboard Button */}
                 <Link href="/dashboard">
                   <button
 
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    className="px-6 py-2 flex items-center justify-center gap-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
-                    <LayoutDashboard size={18} />
+                    <LayoutDashboard size={16} />
                     <span className="hidden md:inline">Dashboard</span>
                   </button>
                 </Link>
@@ -106,9 +107,10 @@ export function Navbar() {
                 {/* Logout Button */}
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 rounded-lg bg-red-500 border-2 border-[#000000] 
-                  shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                  hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
+                  className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                 >
                   Logout
                 </button>
