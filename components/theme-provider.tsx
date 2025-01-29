@@ -5,36 +5,38 @@ import { createContext, useContext, useEffect, useState } from 'react'
 type Theme = 'light' | 'dark'
 
 type ThemeContextType = {
-  theme: Theme
+  theme: Theme | null
   toggleTheme: () => void
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [theme, setTheme] = useState<Theme | null>(null) // Initially null to prevent flicker
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null
-    if (savedTheme) {
-      setTheme(savedTheme)
-    }
+    const preferredTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+
+    setTheme(preferredTheme) // Apply correct theme
+    document.documentElement.classList.toggle('dark', preferredTheme === 'dark')
   }, [])
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem('theme', theme)
+    if (theme !== null) {
+      document.documentElement.classList.toggle('dark', theme === 'dark')
+      localStorage.setItem('theme', theme)
+    }
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
   }
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+  // Prevent rendering until theme is set
+  if (theme === null) return null
+
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
 }
 
 export function useTheme() {

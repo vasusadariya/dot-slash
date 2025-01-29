@@ -82,7 +82,8 @@ const articles = [
 ]
 
 export default function Dashboard() {
-    useAuthGuard();
+    const loading = useAuthGuard(); // Get loading state from the hook
+
     const [isSidebarVisible, setIsSidebarVisible] = useState(true)
 
     useEffect(() => {
@@ -99,6 +100,8 @@ export default function Dashboard() {
         // Cleanup
         return () => window.removeEventListener('resize', handleResize)
     }, [])
+
+    if (loading) return null; 
 
     return (
         <div>
