@@ -22,7 +22,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
-
   const handleLogout = async () => {
     try {
       await signOut(auth); // Sign out the user
@@ -31,7 +30,7 @@ export function Navbar() {
       console.error("Error signing out:", err);
     }
   };
-
+  
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -81,7 +80,6 @@ export function Navbar() {
               </Link>
             ))}
           </div>
-
           {/* User Authentication Section */}
           <div className="flex items-center gap-4">
             {loading ? (
@@ -92,15 +90,18 @@ export function Navbar() {
                 <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse"></div>
               </div>
             ) : user ? (
+
               <>
                 {/* Dashboard Button */}
                 <Link href="/dashboard">
                   <button
-                    className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+
+                    className="px-6 py-2 hidden md:flex flex items-center justify-center gap-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
-                    <LayoutDashboard size={18} />
+                    <LayoutDashboard size={16} />
                     <span className="hidden md:inline">Dashboard</span>
                   </button>
                 </Link>
@@ -108,9 +109,11 @@ export function Navbar() {
                 {/* Logout Button */}
                 <button
                   onClick={handleLogout}
-                  className="hidden md:flex px-4 py-2 rounded-lg bg-red-500 border-2 border-[#000000] 
-                  shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                  hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
+
+                  className="hidden md:flex px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                 >
                   Logout
                 </button>
@@ -138,7 +141,9 @@ export function Navbar() {
                     >
                       Sign Out
                     </button> */}
+
                   </div>
+
                 </div>
                 <ThemeToggle />
               </>
@@ -149,6 +154,7 @@ export function Navbar() {
                   <button
                     className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
                     Login
@@ -156,9 +162,10 @@ export function Navbar() {
                 </Link>
                 <Link href="/signup">
                   <button
-                    className="px-4 py-2 rounded-lg bg-[#D6F32F] border-2 border-[#000000] 
-                    shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
+                    className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
                     Sign Up
                   </button>
@@ -268,3 +275,4 @@ export function Navbar() {
     </nav>
   );
 }
+

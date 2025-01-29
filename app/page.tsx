@@ -1,7 +1,10 @@
-  export default function Home() {
+"use client"
+import { Navbar } from "@/components/Navbar"
+
+export default function Home() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Navbar />
+    </>
   )
 }

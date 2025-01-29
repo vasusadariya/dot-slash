@@ -1,5 +1,5 @@
 "use client"
-
+typeof window !== 'undefined'
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "@/app/firebase/config"
@@ -143,9 +143,8 @@ export default function Signup() {
           {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full px-4 py-2 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
-            }`}
+            className={`w-full px-4 py-2 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
+              }`}
             disabled={loading}
           >
             {loading ? "Signing Up..." : "Sign Up"}
