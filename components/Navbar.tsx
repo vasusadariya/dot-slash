@@ -10,7 +10,6 @@ import { auth } from "@/app/firebase/config"; // Adjust the import path based on
 import { signOut } from "firebase/auth";
 import { LayoutDashboard } from "lucide-react";
 import Image from "next/image"
-import { getAuth } from "firebase/auth";
 
 
 const navigation = [
@@ -79,7 +78,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Auth Buttons and Theme Toggle */}
-          {/* <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4">
             <button className="px-4 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
               <Link href="/login">Login</Link>
             </button>
@@ -87,7 +86,7 @@ export function Navbar() {
               <Link href="/signup">Sign up</Link>
             </button>
             <ThemeToggle />
-          </div> */}
+          </div> 
           {/* Right Section - User Info or Auth Buttons */}
           <div className="flex items-center gap-4">
             {user ? (
@@ -131,12 +130,12 @@ export function Navbar() {
                     <p className="text-sm text-gray-700">{user.displayName || "User"}</p>
                     <p className="text-xs text-gray-500">{user.email}</p>
                     <hr className="my-2" />
-                    <button
+                    {/* <button
                       className="w-full px-4 py-2 text-sm text-left text-red-500 hover:bg-gray-100"
                       onClick={handleLogout}
                     >
                       Sign Out
-                    </button>
+                    </button> */}
                   </div>
                 </div>
 

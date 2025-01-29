@@ -8,49 +8,49 @@ import { Sidebar } from "@/components/sidebar"
 
 const products = [
     {
-        title: "Wallet",
-        description: "The best self-hosted wallet",
+        title:"Wallet",
+        description:"The best self-hosted wallet",
         icon: Wallet,
         href: "/wallet",
     },
     {
-        title: "Commerce",
+        title:"Commerce",
         description: "Accept payments from anyone",
         icon: ShoppingCart,
         href: "/commerce",
     },
     {
-        title: "Cloud",
+        title:"Cloud",
         description: "Build the future of payments",
         icon: Cloud,
         href: "/cloud",
     },
     {
-        title: "Online Trading",
+        title:"Online Trading",
         description: "Access our trading terminal",
         icon: BarChart2,
         href: "/trading",
     },
     {
-        title: "Exchange",
+        title:"Exchange",
         description: "Access to our exchange",
         icon: RefreshCcw,
         href: "/exchange",
     },
     {
-        title: "Query & Transactions",
+        title:"Query & Transactions",
         description: "Secure payments",
         icon: Shield,
         href: "/transactions",
     },
     {
-        title: "Card",
+        title:"Card",
         description: "Spend funds, earn rewards",
         icon: CreditCard,
         href: "/card",
     },
     {
-        title: "Apps downloads",
+        title:"Apps downloads",
         description: "Our apps for web and mobile",
         icon: Download,
         href: "/apps",
