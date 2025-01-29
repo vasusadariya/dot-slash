@@ -8,6 +8,7 @@ import { Sidebar } from "@/components/sidebar"
 import useAuthGuard from "../hooks/useAuthGuard"
 import { Navbar } from "@/components/Navbar"
 
+
 const products = [
     {
         title: "Wallet",

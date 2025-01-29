@@ -135,7 +135,9 @@ export function Navbar() {
                     >
                       Sign Out
                     </button> */}
+
                   </div>
+
                 </div>
                 <ThemeToggle />
 
@@ -147,6 +149,7 @@ export function Navbar() {
                   <button
                     className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
                     Login
@@ -154,14 +157,16 @@ export function Navbar() {
                 </Link>
                 <Link href="/signup">
                   <button
-                    className="px-4 py-2 rounded-lg bg-[#D6F32F] border-2 border-[#000000] 
-                    shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
+                    className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
                     Sign Up
                   </button>
                 </Link>
                 <ThemeToggle />
+
 
               </>
             )}
