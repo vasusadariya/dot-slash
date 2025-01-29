@@ -24,7 +24,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [user, loading, error] = useAuthState(auth); // Using useAuthState hook to track user
   const router = useRouter();
-
   const handleLogout = async () => {
     try {
       await signOut(auth); // Sign out the user
@@ -33,7 +32,7 @@ export function Navbar() {
       console.error("Error signing out:", err);
     }
   };
-
+  
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +54,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-b transition-shadow ${isScrolled ? 'shadow-lg' : ''}`}>
+    <div className={`fixed top-0 left-0 right-0 z-50 bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-b transition-shadow ${isScrolled ? 'shadow-lg' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -140,8 +139,7 @@ export function Navbar() {
                   </div>
 
                 </div>
-            <ThemeToggle />
-
+                <ThemeToggle />
 
               </>
             ) : (
@@ -167,7 +165,8 @@ export function Navbar() {
                     Sign Up
                   </button>
                 </Link>
-            <ThemeToggle />
+                <ThemeToggle />
+
 
               </>
             )}
@@ -229,6 +228,6 @@ export function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    </div>
   )
 }
