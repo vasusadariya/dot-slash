@@ -4,6 +4,14 @@ import Link from "next/link"
 import { Binary, Menu, X } from 'lucide-react'
 import { ThemeToggle } from "./theme-toggle"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config"; // Adjust the import path based on your config file
+import { signOut } from "firebase/auth";
+import { LayoutDashboard } from "lucide-react";
+import Image from "next/image"
+import { getAuth } from "firebase/auth";
+
 
 const navigation = [
   { name: "Platform Solutions", href: "/platform" },
@@ -15,6 +23,17 @@ const navigation = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [user, loading, error] = useAuthState(auth); // Using useAuthState hook to track user
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth); // Sign out the user
+      router.push("/"); // Redirect to login page after sign-out
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
+  };
 
   // Handle scroll effect
   useEffect(() => {
@@ -60,7 +79,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Auth Buttons and Theme Toggle */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* <div className="hidden md:flex items-center gap-4">
             <button className="px-4 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
               <Link href="/login">Login</Link>
             </button>
@@ -68,6 +87,83 @@ export function Navbar() {
               <Link href="/signup">Sign up</Link>
             </button>
             <ThemeToggle />
+          </div> */}
+          {/* Right Section - User Info or Auth Buttons */}
+          <div className="flex items-center gap-4">
+            {user ? (
+              <>
+                {/* Dashboard Button */}
+                <Link href="/dashboard">
+                  <button
+
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                  >
+                    <LayoutDashboard size={18} />
+                    <span className="hidden md:inline">Dashboard</span>
+                  </button>
+                </Link>
+
+                {/* Logout Button */}
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 rounded-lg bg-red-500 border-2 border-[#000000] 
+                  shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                  hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
+                >
+                  Logout
+                </button>
+
+
+                {/* User Avatar */}
+                <div className="relative group">
+                  <Image
+                    src={user?.photoURL || "/default-avatar.png"} // Fallback to default avatar
+                    alt={user?.displayName || "User Avatar"}
+                    width={40}
+                    height={40}
+                    className="rounded-full cursor-pointer"
+                    aria-label="User Avatar"
+                  />
+                  {/* Optional Dropdown */}
+                  <div className="absolute right-0 hidden w-48 p-2 mt-2 bg-white border rounded-lg shadow-lg group-hover:block">
+                    <p className="text-sm text-gray-700">{user.displayName || "User"}</p>
+                    <p className="text-xs text-gray-500">{user.email}</p>
+                    <hr className="my-2" />
+                    <button
+                      className="w-full px-4 py-2 text-sm text-left text-red-500 hover:bg-gray-100"
+                      onClick={handleLogout}
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+
+              </>
+            ) : (
+              <>
+                {/* Login and Sign-Up Buttons */}
+                <Link href="/login">
+                  <button
+                    className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                  >
+                    Login
+                  </button>
+                </Link>
+                <Link href="/signup">
+                  <button
+                    className="px-4 py-2 rounded-lg bg-[#D6F32F] border-2 border-[#000000] 
+                    shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
+                  >
+                    Sign Up
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
