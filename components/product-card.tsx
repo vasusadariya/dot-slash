@@ -12,8 +12,10 @@ export function ProductCard({ title, description, icon: Icon, href }: ProductCar
   return (
     <Link
       href={href}
-      className="block p-6 bg-white dark:bg-gray-800 border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] 
-      hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200"
+      className="block p-6 bg-white dark:bg-gray-800 border-2 border-[#000000] 
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
     >
       <div className="flex gap-4 items-start">
         <div className="p-2 border-2 border-black dark:border-gray-600">

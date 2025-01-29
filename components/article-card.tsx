@@ -9,8 +9,10 @@ interface ArticleCardProps {
 
 export function ArticleCard({ tag, title, description, href }: ArticleCardProps) {
   return (
-    <div className="block p-6 bg-white dark:bg-gray-800 border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] 
-      hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
+    <div className="block p-6 bg-white dark:bg-gray-800 border-2 border-[#000000] 
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
       <span className="inline-block px-3 py-1 text-sm border-2 border-black dark:border-gray-600 mb-4 text-black dark:text-gray-300">
         {tag}
       </span>
@@ -18,7 +20,7 @@ export function ArticleCard({ tag, title, description, href }: ArticleCardProps)
       <p className="text-gray-600 dark:text-gray-400 mb-4">{description}</p>
       <Link 
         href={href}
-        className="inline-flex items-center text-sm font-semibold hover:underline text-gray-400 hover:text-purple-500 dark:text-gray-300"
+        className="inline-flex items-center text-sm font-semibold hover:underline text-gray-400 hover:text-purple-500 dark:text-gray-300 dark:hover:text-green-400"
       >
         Read more
         <svg

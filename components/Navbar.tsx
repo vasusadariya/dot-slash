@@ -78,7 +78,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Auth Buttons and Theme Toggle */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* <div className="hidden md:flex items-center gap-4">
             <button className="px-4 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
               <Link href="/login">Login</Link>
             </button>
@@ -86,7 +86,7 @@ export function Navbar() {
               <Link href="/signup">Sign up</Link>
             </button>
             <ThemeToggle />
-          </div> 
+          </div>  */}
           {/* Right Section - User Info or Auth Buttons */}
           <div className="flex items-center gap-4">
             {user ? (
@@ -136,8 +136,12 @@ export function Navbar() {
                     >
                       Sign Out
                     </button> */}
+
                   </div>
+
                 </div>
+            <ThemeToggle />
+
 
               </>
             ) : (
@@ -147,6 +151,7 @@ export function Navbar() {
                   <button
                     className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
                     Login
@@ -154,13 +159,16 @@ export function Navbar() {
                 </Link>
                 <Link href="/signup">
                   <button
-                    className="px-4 py-2 rounded-lg bg-[#D6F32F] border-2 border-[#000000] 
-                    shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
+                    className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                   >
                     Sign Up
                   </button>
                 </Link>
+            <ThemeToggle />
+
               </>
             )}
           </div>
