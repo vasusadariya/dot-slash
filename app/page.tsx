@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Wallet, ShoppingCart, Cloud, BarChart2 } from "lucide-react"
+import LoadingWrapper from "@/components/LoadingWrapper"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { useRouter } from "next/navigation"
@@ -68,6 +69,7 @@ export default function LandingPage() {
   if (!mounted) return null
   return (
     <div>
+      <LoadingWrapper>
       <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
         {/* Hero Section */}
@@ -154,6 +156,7 @@ export default function LandingPage() {
         </section>
         <Footer />
       </div>
+       </LoadingWrapper>
     </div>
   )
 }
