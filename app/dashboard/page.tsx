@@ -5,6 +5,7 @@ import { Wallet, ShoppingCart, Cloud, BarChart2, RefreshCcw, Download, CreditCar
 import { ProductCard } from "@/components/product-card"
 import { ArticleCard } from "@/components/article-card"
 import { Sidebar } from "@/components/sidebar"
+import useAuthGuard from "../hooks/useAuthGuard"
 
 const products = [
     {
@@ -79,6 +80,9 @@ const articles = [
 ]
 
 export default function Dashboard() {
+
+    useAuthGuard();
+
     const [isSidebarVisible, setIsSidebarVisible] = useState(true)
 
     useEffect(() => {
