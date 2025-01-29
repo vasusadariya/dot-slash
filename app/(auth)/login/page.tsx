@@ -65,9 +65,9 @@ export default function Login() {
 
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 flex items-center justify-center p-4">
+      <div className="w-full max-w-sm bg-white p-6 rounded-none border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+        <h2 className="text-3xl font-black mb-1 text-center">Login</h2>
         <p className="text-sm text-center text-gray-600">Sign in to your account</p>
 
         {/* Error Messages */}
@@ -80,7 +80,7 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="mt-6">
           {/* Email Field */}
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-bold mb-1">
               Email Address
             </label>
             <input
@@ -90,13 +90,13 @@ export default function Login() {
               value={formData.email}
               onChange={handleChange}
               placeholder="example@email.com"
-              className="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2 text-sm border-2 border-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
             />
           </div>
 
           {/* Password Field */}
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-bold mb-1">
               Password
             </label>
             <input
@@ -106,14 +106,14 @@ export default function Login() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
-              className="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2 text-sm border-2 border-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full px-4 py-2 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
+            className={`w-full bg-purple-500 border-2 text-white py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] ${loading ? "opacity-50 cursor-not-allowed" : "hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all disabled:opacity-50"
               }`}
             disabled={loading}
           >
@@ -125,24 +125,24 @@ export default function Login() {
         <div className="mt-4">
           <button
             onClick={handleGoogle}
-            className="w-full px-4 py-2 text-white bg-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 hover:bg-red-600"
+            className="w-full border-2 bg-white text-black py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             Continue with Google
           </button>
         </div>
 
         {/* Forgot Password */}
-        <p className="mt-4 text-sm text-center text-gray-600">
+        <p className="mt-4 text-sm text-center">
           Forgot your password?{" "}
-          <a href="/reset-password" className="text-blue-500 hover:underline">
+          <a href="/reset-password" className="font-bold underline hover:text-purple-600">
             Reset it here
           </a>
         </p>
 
         {/* Signup Redirect */}
-        <p className="mt-2 text-sm text-center text-gray-600">
+        <p className="mt-2 text-sm text-center">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-blue-500 hover:underline">
+          <a href="/signup" className="font-bold underline hover:text-purple-600">
             Sign up
           </a>
         </p>
