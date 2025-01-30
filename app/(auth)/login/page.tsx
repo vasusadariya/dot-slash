@@ -45,9 +45,13 @@ export default function Login() {
       await signInWithEmailAndPassword(email, password);
       console.log("User logged in successfully!", user);
       sessionStorage.setItem('user', 'true');
-      router.push("/dashboard"); // Redirect to the dashboard or homepage
+      router.push("/dashboard"); // Redirect to the dashboard after successful login
     } catch (firebaseError) {
       console.error("Firebase error:", firebaseError);
+      // If there's an error, set it to local error without redirecting
+      if ((firebaseError as Error)?.message) {
+        setLocalError((firebaseError as Error).message); // Show the error message to the user
+      }
     }
   };
 
@@ -57,9 +61,10 @@ export default function Login() {
       const result = await signInWithPopup(auth, provider);
       console.log("Google Sign-In successful:", result.user);
       sessionStorage.setItem("user", JSON.stringify(result.user));
-      router.push("/dashboard"); // Redirect to the homepage or dashboard
+      router.push("/dashboard"); // Redirect to the homepage or dashboard after Google login
     } catch (error) {
       console.error("Google Sign-In error:", error);
+      setLocalError("Google login failed. Please try again."); // Display Google login error
     }
   };
 
@@ -134,7 +139,7 @@ export default function Login() {
         {/* Forgot Password */}
         <p className="mt-4 text-sm text-center dark:text-black">
           Forgot your password?{" "}
-          <a href="/reset-password" className="font-bold underline dark:text-gray-400 hover:text-purple-600 dark:hover:text-green-400">
+          <a href="/forgot" className="text-blue-500 hover:underline">
             Reset it here
           </a>
         </p>
