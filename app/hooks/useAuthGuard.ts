@@ -23,3 +23,23 @@ const useAuthGuard = () => {
 };
 
 export default useAuthGuard;
+
+//use like this 
+
+// // pages/dashboard.tsx
+// "use client";
+
+// import useAuthGuard from "@/hooks/useAuthGuard";
+
+// export default function Dashboard() {
+//   // Use the auth guard to protect the page
+  // useAuthGuard();
+
+//   return (
+//     <div>
+//       <h1>Welcome to your Dashboard!</h1>
+//       {/* Dashboard content here */}
+//     </div>
+//   );
+// }
+
