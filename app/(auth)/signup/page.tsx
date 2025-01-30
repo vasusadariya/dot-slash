@@ -100,22 +100,21 @@ export default function Signup() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800">Sign Up</h2>
-        <p className="text-sm text-center text-gray-600">Create your account</p>
-
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 flex items-center justify-center p-4">
+      <div className="w-full max-w-sm bg-white p-6 rounded-none border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_#4ade80]">
+        <h1 className="text-3xl font-black mb-1 text-center dark:text-black">Sign up</h1>
+        <p className="text-sm text-center text-gray-600">Create a new account</p>
         {/* Error Messages */}
         {(localError || error) && (
-          <div className="p-3 my-4 text-sm text-red-800 bg-red-200 rounded-md">{localError || error?.message}</div>
+          <div className="p-2 mb-4 text-sm text-red-800 bg-red-200 border-2 border-red-800 rounded-none">
+            {localError || error?.message}
+          </div>
         )}
 
-        <form onSubmit={handleSubmit} className="mt-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Full Name
-            </label>
+          <div>
+            <label className="block text-sm font-bold mb-1 dark:text-black">Full Name</label>
             <input
               id="name"
               name="name"
@@ -123,15 +122,13 @@ export default function Signup() {
               value={formData.name}
               onChange={handleChange}
               placeholder="John Doe"
-              className="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2 text-sm border-2 border-black dark:text-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
             />
           </div>
 
           {/* Email Field */}
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email Address
-            </label>
+          <div>
+            <label className="block text-sm font-bold mb-1 dark:text-black">Email Address</label>
             <input
               id="email"
               name="email"
@@ -139,15 +136,13 @@ export default function Signup() {
               value={formData.email}
               onChange={handleChange}
               placeholder="example@email.com"
-              className="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2 text-sm border-2 border-black dark:text-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
             />
           </div>
 
           {/* Password Field */}
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
+          <div>
+            <label className="block text-sm font-bold mb-1 dark:text-black">Password</label>
             <input
               id="password"
               name="password"
@@ -155,36 +150,34 @@ export default function Signup() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
-              className="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2 text-sm border-2 border-black rounded-none dark:text-black focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full px-4 py-2 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
-              }`}
             disabled={loading}
+            className="w-full bg-purple-500 border-2 text-white py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all disabled:opacity-50"
           >
-            {loading ? "Signing Up..." : "Sign Up"}
+            {loading ? "Creating account..." : "Create account"}
           </button>
-        </form>
 
-        {/* Google Sign-In Button */}
-        <div className="mt-4">
+          {/* Google Sign-In Button */}
           <button
             onClick={handleGoogle}
-            className="w-full px-4 py-2 text-white bg-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 hover:bg-red-600"
+            type="button"
+            className="w-full border-2 bg-white text-black py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             Continue with Google
           </button>
-        </div>
+        </form>
 
-        {/* Already have an account */}
-        <p className="mt-4 text-sm text-center text-gray-600">
-          Already have an account?{" "}
-          <a href="/login" className="text-blue-500 hover:underline">
-            Log in
+        {/* Sign In Link */}
+        <p className="mt-6 text-sm text-center dark:text-black">
+          Already registered?{" "}
+          <a href="/login" className="font-bold underline dark:text-gray-400 hover:text-purple-600 dark:hover:text-green-400">
+            Sign in to your account
           </a>
         </p>
       </div>

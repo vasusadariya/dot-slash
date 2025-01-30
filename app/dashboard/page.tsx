@@ -101,7 +101,7 @@ export default function Dashboard() {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-    if (loading) return null; 
+    if (loading) return null;
 
     return (
         <div>
@@ -133,7 +133,6 @@ export default function Dashboard() {
                             ))}
                         </div>
                     </section>
-
                     <section>
                         <h2 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-gray-100">
                             Popular help articles

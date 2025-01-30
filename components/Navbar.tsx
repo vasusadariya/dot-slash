@@ -1,7 +1,7 @@
 "use client";
-
+typeof window !== 'undefined'
 import Link from "next/link";
-import { Binary, Menu, X } from "lucide-react";
+import { Binary, Menu, X, UserRound } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,7 @@ export function Navbar() {
       console.error("Error signing out:", err);
     }
   };
-  
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -53,9 +53,8 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-b transition-shadow ${
-        isScrolled ? "shadow-lg" : ""
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-b transition-shadow ${isScrolled ? "shadow-lg" : ""
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -96,7 +95,7 @@ export function Navbar() {
                 <Link href="/dashboard">
                   <button
 
-                    className="px-6 py-2 hidden md:flex flex items-center justify-center gap-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    className="px-6 py-2 hidden md:flex items-center justify-center gap-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
                     dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
@@ -121,10 +120,10 @@ export function Navbar() {
                 {/* User Avatar */}
                 <div className="relative group">
                   <Image
-                    src={user?.photoURL || "/default-avatar.png"} // Fallback to default avatar
+                    src={user?.photoURL || "/default-avatar.svg"} // Fallback to default avatar
                     alt={user?.displayName || "User Avatar"}
-                    width={40}
-                    height={40}
+                    width={50}
+                    height={50}
                     className="rounded-full cursor-pointer"
                     aria-label="User Avatar"
                   />
@@ -219,54 +218,54 @@ export function Navbar() {
 
               {/* Mobile Auth Buttons */}
               <div className="flex flex-col gap-4 mt-8">
-              {loading ? (
-              // ⬇️ Placeholder while loading
-              <div>Loding...</div>
-            ) : user ? (
-              <>
-                {/* Dashboard Button */}
-                <Link href="/dashboard">
-                  <button
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                {loading ? (
+                  // ⬇️ Placeholder while loading
+                  <div>Loding...</div>
+                ) : user ? (
+                  <>
+                    {/* Dashboard Button */}
+                    <Link href="/dashboard">
+                      <button
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
   text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
   hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
-                  >
-                    <LayoutDashboard size={18} />
-                    Dashboard
-                  </button>
-                </Link>
+                      >
+                        <LayoutDashboard size={18} />
+                        Dashboard
+                      </button>
+                    </Link>
 
-                {/* Logout Button */}
-                <button
-                  onClick={handleLogout}
-                  className="px-4 py-2 rounded-lg bg-red-500 border-2 border-[#000000] 
+                    {/* Logout Button */}
+                    <button
+                      onClick={handleLogout}
+                      className="px-4 py-2 rounded-lg bg-red-500 border-2 border-[#000000] 
                   shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
                   hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm font-semibold"
-                >
-                  Logout
-                </button>
+                    >
+                      Logout
+                    </button>
 
-            
-              </>
-            ) : (
 
-              <>
-                
-                <button className="w-auto px-2 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
-                  <Link href="/login" onClick={() => setIsOpen(false)}>
-                    Login
-                  </Link>
-                </button>
-                <button className="w-auto px-2 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
-                  <Link href="/signup" onClick={() => setIsOpen(false)}>
-                    Sign up
-                  </Link>
-                </button>
+                  </>
+                ) : (
 
-                </>
+                  <>
 
-            )}
-                
+                    <button className="w-auto px-2 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
+                      <Link href="/login" onClick={() => setIsOpen(false)}>
+                        Login
+                      </Link>
+                    </button>
+                    <button className="w-auto px-2 py-2 bg-purple-500 text-white rounded-lg border-2 border-black dark:border-gray-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#4ade80] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_#4ade80] transition-shadow duration-200">
+                      <Link href="/signup" onClick={() => setIsOpen(false)}>
+                        Sign up
+                      </Link>
+                    </button>
+
+                  </>
+
+                )}
+
               </div>
             </div>
           </div>
