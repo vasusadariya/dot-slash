@@ -4,7 +4,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "@/app/firebase/config"
 import { useRouter } from "next/navigation"
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 interface FormData {
   name: string
@@ -31,37 +31,56 @@ export default function Signup() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-
+  
     const { name, email, password } = formData
-
+  
     // Basic form validation
     if (!name || !email || !password) {
       setLocalError("All fields are required")
       return
     }
-
+  
     if (password.length < 6) {
       setLocalError("Password must be at least 6 characters long")
       return
     }
-
+  
     setLocalError("") // Clear local errors
-
+  
     try {
       const result = await createUserWithEmailAndPassword(email, password)
+  
       if (result && result.user) {
         console.log("User created successfully!", result.user)
+  
+        // Set user session after successful sign-up
         sessionStorage.setItem("user", "true")
-        router.push("/dashboard") // Redirect to the homepage or dashboard only on success
+  
+        // Optionally, you could set more user data in the session or localStorage here if needed.
+        // For example: sessionStorage.setItem('userName', result.user.displayName)
+  
+        // Redirect to the dashboard or homepage after sign-up
+        router.push("/dashboard")
       } else {
-        // If result or result.user is null, it means there was an error
+        // Handle the case where user creation fails without an explicit error code
         setLocalError("Failed to create user. Please try again.")
       }
     } catch (firebaseError) {
       console.error("Firebase error:", firebaseError)
-      setLocalError("An error occurred during sign up. Please try again.")
+  
+      // Handle specific Firebase error codes to give more detailed feedback
+      if ((firebaseError as { code: string }).code === "auth/email-already-in-use") {
+        setLocalError("This email is already in use. Please use a different email.")
+      } else if ((firebaseError as { code: string }).code === "auth/weak-password") {
+        setLocalError("Password should be at least 6 characters long.")
+      } else if ((firebaseError as { code: string }).code === "auth/invalid-email") {
+        setLocalError("The email address is not valid.")
+      } else {
+        setLocalError("An error occurred during sign-up. Please try again.")
+      }
     }
   }
+  
 
   const handleGoogle = async () => {
     const provider = new GoogleAuthProvider()
