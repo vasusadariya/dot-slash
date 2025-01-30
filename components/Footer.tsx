@@ -4,8 +4,6 @@ import { ThemeToggle } from "./theme-toggle"
 
 const footerLinks = [
   { title: "Company", links: ["About", "Careers", "Press"] },
-  { title: "Solutions", links: ["Platform", "Clients", "Insights"] },
-  { title: "Resources", links: ["Blog", "Documentation", "Support"] },
   { title: "Legal", links: ["Privacy", "Terms", "Security"] },
 ]
 
@@ -13,7 +11,7 @@ export function Footer() {
   return (
     <footer className="bg-white bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 border-t">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 place-content-end gap-8">
           {/* Logo and description */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 text-xl font-semibold">
@@ -48,10 +46,10 @@ export function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div className="mt-10 pt-5 border-t border-gray-200 dark:border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">© 2023 HackOps. All rights reserved.</p>
-            <div className="flex items-center mt-4 md:mt-0">
+            <div className="flex items-center mt-3 md:mt-0">
               <div className="ml-4 flex space-x-4">
                 {/* Add your social media icons here */}
                 <a href="#" className="text-gray-400 hover:text-purple-500 dark:hover:text-green-400">
