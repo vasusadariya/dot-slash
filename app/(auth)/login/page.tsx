@@ -65,9 +65,9 @@ export default function Login() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 flex items-center justify-center p-4">
-      <div className="w-full max-w-sm bg-white p-6 rounded-none border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-        <h2 className="text-3xl font-black mb-1 text-center">Login</h2>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 flex items-center justify-center p-4">
+      <div className="w-full max-w-sm bg-white p-6 rounded-none border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_#4ade80]">
+        <h2 className="text-3xl font-black mb-1 text-center dark:text-black">Login</h2>
         <p className="text-sm text-center text-gray-600">Sign in to your account</p>
 
         {/* Error Messages */}
@@ -80,7 +80,7 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="mt-6">
           {/* Email Field */}
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-bold mb-1">
+            <label htmlFor="email" className="block text-sm font-bold mb-1 dark:text-black">
               Email Address
             </label>
             <input
@@ -90,13 +90,13 @@ export default function Login() {
               value={formData.email}
               onChange={handleChange}
               placeholder="example@email.com"
-              className="w-full p-2 text-sm border-2 border-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
+              className="w-full p-2 text-sm border-2 dark:text-black border-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
             />
           </div>
 
           {/* Password Field */}
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-bold mb-1">
+            <label htmlFor="password" className="block dark:text-black text-sm font-bold mb-1">
               Password
             </label>
             <input
@@ -106,7 +106,7 @@ export default function Login() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
-              className="w-full p-2 text-sm border-2 border-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
+              className="w-full p-2 text-sm border-2 border-black dark:text-black rounded-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-inset-1"
             />
           </div>
 
@@ -132,17 +132,17 @@ export default function Login() {
         </div>
 
         {/* Forgot Password */}
-        <p className="mt-4 text-sm text-center">
+        <p className="mt-4 text-sm text-center dark:text-black">
           Forgot your password?{" "}
-          <a href="/reset-password" className="font-bold underline hover:text-purple-600">
+          <a href="/reset-password" className="font-bold underline dark:text-gray-400 hover:text-purple-600 dark:hover:text-green-400">
             Reset it here
           </a>
         </p>
 
         {/* Signup Redirect */}
-        <p className="mt-2 text-sm text-center">
+        <p className="mt-2 text-sm text-center dark:text-black">
           Don’t have an account?{" "}
-          <a href="/signup" className="font-bold underline hover:text-purple-600">
+          <a href="/signup" className="font-bold underline dark:text-gray-400 hover:text-purple-600 dark:hover:text-green-400">
             Sign up
           </a>
         </p>

@@ -8,7 +8,7 @@ import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { useRouter } from "next/navigation"
 import { ProductCard } from "@/components/product-card"
-
+import Link from "next/link"
 const features = [
   {
     href: "/wallet",
@@ -90,23 +90,17 @@ export default function LandingPage() {
           >
             Empowering your financial journey with cutting-edge solutions
           </motion.p>
-          <div className="flex justify-center">
-            <motion.button
-              className="px-6 py-2 md:flex flex items-center justify-center gap-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
-                      text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
-                      dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
-                      hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              onClick={() => {
-                router.push("/signup")
-              }}
-            >
-              <ArrowRight className="w-6 h-6" />
-              Get Started
-            </motion.button>
-          </div>
+          <Link href="/signup" className="flex justify-center items-center">
+                  <button
+                    className="px-4 py-2 flex justify-center items-center rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
+                    dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
+                    hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                  >
+                    <ArrowRight className="w-6 h-6" />
+                    Get Started
+                  </button>
+                </Link>
 
         </section>
 
