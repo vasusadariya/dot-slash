@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { Binary } from "lucide-react"
-import { ThemeToggle } from "./theme-toggle"
 
 const footerLinks = [
   { title: "Company", links: ["About", "Careers", "Press"] },

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { TypeIcon as type, LucideIcon } from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 
 interface ProductCardProps {
   title: string

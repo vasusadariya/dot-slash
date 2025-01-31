@@ -1,7 +1,6 @@
 "use client";
-typeof window !== 'undefined'
 import Link from "next/link";
-import { Binary, Menu, X, UserRound } from "lucide-react";
+import { Binary, Menu, X} from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
