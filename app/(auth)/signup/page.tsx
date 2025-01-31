@@ -1,10 +1,10 @@
 "use client"
-typeof window !== 'undefined'
+
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "@/app/firebase/config"
 import { useRouter } from "next/navigation"
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import {  GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 interface FormData {
   name: string
@@ -21,7 +21,7 @@ export default function Signup() {
 
   const [localError, setLocalError] = useState<string>("")
   const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth)
-
+  console.log(user)
   const router = useRouter()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
