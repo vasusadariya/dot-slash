@@ -30,30 +30,31 @@ export default function Login() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
+  
     const { email, password } = formData;
-
+  
     // Basic form validation
     if (!email || !password) {
       setLocalError("Both email and password are required.");
       return;
     }
-
-    setLocalError(""); // Clear local errors
-
+  
+    setLocalError(""); // Clear previous errors
+  
     try {
-      await signInWithEmailAndPassword(email, password);
-      console.log("User logged in successfully!", user);
-      sessionStorage.setItem('user', 'true');
-      router.push("/dashboard"); // Redirect to the dashboard after successful login
+      const userCredential = await signInWithEmailAndPassword(email, password);
+  
+      if (userCredential && userCredential.user) {
+        console.log("User logged in successfully!", userCredential.user);
+        sessionStorage.setItem("user", "true");
+        router.push("/dashboard"); // Redirect only if login is successful
+      }
     } catch (firebaseError) {
       console.error("Firebase error:", firebaseError);
-      // If there's an error, set it to local error without redirecting
-      if ((firebaseError as Error)?.message) {
-        setLocalError((firebaseError as Error).message); // Show the error message to the user
-      }
+      setLocalError("Invalid email or password. Please try again."); // Show the error message to the user
     }
   };
+  
 
   const handleGoogle = async () => {
     const provider = new GoogleAuthProvider();
