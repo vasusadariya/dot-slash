@@ -8,6 +8,9 @@ import { Sidebar } from "@/components/sidebar"
 import useAuthGuard from "../hooks/useAuthGuard"
 import { Navbar } from "@/components/Navbar"
 
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
+
 
 const products = [
     {
@@ -84,6 +87,8 @@ const articles = [
 export default function Dashboard() {
     const loading = useAuthGuard(); // Get loading state from the hook
 
+    const [user] = useAuthState(auth);
+
     const [isSidebarVisible, setIsSidebarVisible] = useState(true)
 
     useEffect(() => {
@@ -119,7 +124,7 @@ export default function Dashboard() {
                 <div className={`transition-all duration-200 ease-in-out ${isSidebarVisible ? 'md:ml-64' : 'ml-0'} p-4 sm:p-6 md:p-8`}>
                     <div className="mb-8 md:mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-gray-900 dark:text-gray-100 pt-20 md:pt-16"> {/* Adjusted padding-top for navbar */}
-                            Hello!👋
+                            Hello!! {user?.displayName ?? ""}👋
                         </h2>
                     </div>
 
