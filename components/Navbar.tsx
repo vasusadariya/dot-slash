@@ -151,7 +151,7 @@ export function Navbar() {
                 {/* Login and Sign-Up Buttons */}
                 <Link href="/login">
                   <button
-                    className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    className="px-4 py-2 hidden md:flex rounded-lg border-2 border-[#000000] bg-[#ff1fbc]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
                     dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
@@ -161,7 +161,7 @@ export function Navbar() {
                 </Link>
                 <Link href="/signup">
                   <button
-                    className="px-4 py-2 rounded-lg border-2 border-[#000000] bg-[#ae7aff]
+                    className="px-4 py-2 hidden md:flex rounded-lg border-2 border-[#000000] bg-[#ae7aff]
                     text-sm font-semibold text-black shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] 
                     dark:shadow-[3px_3px_0px_0px_#4ade80] dark:hover:shadow-[1px_1px_0px_0px_#4ade80]
                     hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
