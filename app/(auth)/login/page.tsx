@@ -1,5 +1,5 @@
 "use client";
-
+typeof window !== 'undefined'
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config"; // Update with your Firebase config path
@@ -30,30 +30,31 @@ export default function Login() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
+  
     const { email, password } = formData;
-
+  
     // Basic form validation
     if (!email || !password) {
       setLocalError("Both email and password are required.");
       return;
     }
-
-    setLocalError(""); // Clear local errors
-
+  
+    setLocalError(""); // Clear previous errors
+  
     try {
-      await signInWithEmailAndPassword(email, password);
-      console.log("User logged in successfully!", user);
-      sessionStorage.setItem('user', 'true');
-      router.push("/dashboard"); // Redirect to the dashboard after successful login
+      const userCredential = await signInWithEmailAndPassword(email, password);
+  
+      if (userCredential && userCredential.user) {
+        console.log("User logged in successfully!", userCredential.user);
+        sessionStorage.setItem("user", "true");
+        router.push("/dashboard"); // Redirect only if login is successful
+      }
     } catch (firebaseError) {
       console.error("Firebase error:", firebaseError);
-      // If there's an error, set it to local error without redirecting
-      if ((firebaseError as Error)?.message) {
-        setLocalError((firebaseError as Error).message); // Show the error message to the user
-      }
+      setLocalError("Invalid email or password. Please try again."); // Show the error message to the user
     }
   };
+  
 
   const handleGoogle = async () => {
     const provider = new GoogleAuthProvider();
@@ -130,7 +131,7 @@ export default function Login() {
         <div className="mt-4">
           <button
             onClick={handleGoogle}
-            className="w-full border-2 bg-white text-black py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+            className="w-full border-2 bg-green-500 text-black py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             Continue with Google
           </button>

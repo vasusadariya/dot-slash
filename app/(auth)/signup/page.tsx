@@ -2,9 +2,9 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
-import { auth } from "@/app/firebase/config"
+import { auth, updateProfile } from "@/app/firebase/config"
 import { useRouter } from "next/navigation"
-import {  GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 interface FormData {
   name: string
@@ -21,7 +21,7 @@ export default function Signup() {
 
   const [localError, setLocalError] = useState<string>("")
   const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth)
-  console.log(user)
+
   const router = useRouter()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,34 +31,41 @@ export default function Signup() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-  
+
     const { name, email, password } = formData
-  
+
     // Basic form validation
     if (!name || !email || !password) {
       setLocalError("All fields are required")
       return
     }
-  
+
     if (password.length < 6) {
       setLocalError("Password must be at least 6 characters long")
       return
     }
-  
+
     setLocalError("") // Clear local errors
-  
+
     try {
       const result = await createUserWithEmailAndPassword(email, password)
-  
+
       if (result && result.user) {
         console.log("User created successfully!", result.user)
-  
+
+        // Update user profile with name
+        await updateProfile(result.user, { displayName: name })
+
         // Set user session after successful sign-up
-        sessionStorage.setItem("user", "true")
-  
-        // Optionally, you could set more user data in the session or localStorage here if needed.
-        // For example: sessionStorage.setItem('userName', result.user.displayName)
-  
+        sessionStorage.setItem(
+          "user",
+          JSON.stringify({
+            uid: result.user.uid,
+            email: result.user.email,
+            displayName: name,
+          }),
+        )
+
         // Redirect to the dashboard or homepage after sign-up
         router.push("/dashboard")
       } else {
@@ -67,7 +74,7 @@ export default function Signup() {
       }
     } catch (firebaseError) {
       console.error("Firebase error:", firebaseError)
-  
+
       // Handle specific Firebase error codes to give more detailed feedback
       if ((firebaseError as { code: string }).code === "auth/email-already-in-use") {
         setLocalError("This email is already in use. Please use a different email.")
@@ -80,7 +87,6 @@ export default function Signup() {
       }
     }
   }
-  
 
   const handleGoogle = async () => {
     const provider = new GoogleAuthProvider()
@@ -88,8 +94,15 @@ export default function Signup() {
       const result = await signInWithPopup(auth, provider)
       if (result && result.user) {
         console.log("Google Sign-In successful:", result.user)
-        sessionStorage.setItem("user", JSON.stringify(result.user))
-        router.push("/dashboard") // Redirect to the homepage or dashboard only on success
+        sessionStorage.setItem(
+          "user",
+          JSON.stringify({
+            uid: result.user.uid,
+            email: result.user.email,
+            displayName: result.user.displayName,
+          }),
+        )
+        router.push("/dashboard")
       } else {
         setLocalError("Failed to sign in with Google. Please try again.")
       }
@@ -167,7 +180,7 @@ export default function Signup() {
           <button
             onClick={handleGoogle}
             type="button"
-            className="w-full border-2 bg-white text-black py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+            className="w-full border-2 bg-green-500 text-black py-2 px-3 text-sm font-bold border-3 border-black rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             Continue with Google
           </button>
