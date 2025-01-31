@@ -52,7 +52,7 @@ export default function ForgotPassword() {
             </form>
             {message && (
               <div
-                className={`mt-4 p-4 rounded-md ${message.type === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}
+                className={`⁠mt-4 p-4 rounded-md ${message.type === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"} `}
               >
                 {message.text}
               </div>
@@ -69,4 +69,3 @@ export default function ForgotPassword() {
     </div>
   )
 }
-

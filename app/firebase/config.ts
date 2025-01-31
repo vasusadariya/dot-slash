@@ -15,4 +15,3 @@ const app: FirebaseApp = !getApps().length ? initializeApp(firebaseConfig) : get
 const auth: Auth = getAuth(app)
 
 export { app, auth, updateProfile }
-
