@@ -3,7 +3,7 @@ const express = require('express');
 
 const User= require('./schema');
 
-const port = 3004;
+const port = 3000;
 const app = express();
 
 app.use(express.json());
